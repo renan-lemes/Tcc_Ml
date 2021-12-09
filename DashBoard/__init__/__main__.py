@@ -1,7 +1,7 @@
 
 # %%
 from dash import Dash
-from dash_html_components import Div, H1, P, H3
+from dash_html_components import Div, H1, P, H3, Br
 from dash_core_components import Graph, Dropdown, Slider, Checklist
 from dash_core_components import Input as DCCInput
 from dash.dependencies import Input, Output
@@ -16,8 +16,8 @@ df3 = download('PBR', '2021-01-01', datetime.now(),
                progress=False)
 
 external_stylesheets = [
-    'https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css'
-    '/assets/style.css',
+    # 'https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css'
+    './assets/style.css',
 ]
 
 database = {
@@ -33,10 +33,12 @@ app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = Div(
     children=[
-        DCCInput(id='meu_input', value='Potato'),
-        P(id='output'),
-
-        H1('Olá '),
+        DCCInput(id='meu_input1', value='Potato'),
+        Br(),
+        DCCInput(id='meu_input2', value='Dale'),
+        P(id='output1',),
+        P(id='output2'),
+        H1('Olá ',),
         P('Bem vindo ao dash'),
         P('Bora codar'),
         H3('Gráfico de Linha'),
@@ -97,12 +99,18 @@ app.layout = Div(
 
 
 @app.callback(
-    Output('output', 'children'),
-    Input('meu_input', 'value')  # children #
+    [
+        Output('output1', 'children'),
+        Output('output2', 'children'),
+    ],
+    [
+        Input('meu_input1', 'value'),
+        Input('meu_input2', 'value'),
+    ],
 )
-def meu_callback(meu_input):
-    print(f'Callback {meu_input}')
-    return meu_input
+def meu_callback(meu_input1, meu_input2):
+    #print(f'Callback {meu_input}')
+    return meu_input1, meu_input2
 
 
 app.run_server()
