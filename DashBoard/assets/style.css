@@ -1,3 +1,6 @@
+/*
+    Estudar como fazer a estilização no Dash
+*/
 *{
     background-color: black;
     display: 1;
@@ -9,5 +12,35 @@ body{
     margin: top;
     padding: 15rem;
 }
+
+div{
+    background-color: black;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 1.2rem;
+
+}
+
+H1{
+    background-color:black;
+    display:flex;
+    margin: 20rem;
+    padding: 20rem;
+}
+
+
+h2{
+    background-color:black;
+
+}
+
+#Dale{
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: #12AFCB;
+    border-radius: 1.6rem;
+}
+
 
 
